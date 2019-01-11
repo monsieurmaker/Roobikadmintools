@@ -1,47 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 	<head>
-		
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Roobik Admin Tools</title>
+
 	</head>
 	<body>
-		<h1>Welcome to My Awesome App</h1>
-		<div id="firebaseui-auth-container"></div>
-		<div id="loader">Loading...</div>
-	</body>
-	<script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js">
-		</script>
-		<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
-	<script>
-		
-		var ui = new firebaseui.auth.AuthUI(firebase.auth());
-		ui.start('#firebaseui-auth-container', {
-  				signInOptions: [
-	   		
-	    firebase.auth.GoogleAuthProvider.PROVIDER_ID,	   
-	  ],
-	});
+    <div id="app">
+      <h1>{{titulo}}</h1>
+      <input type="text" v-model="nuevoAlumno.nombre">
+      <button @click="agregarAlumno()">Agregar Nuevo</button>
+      <ul>
+        <li v-for="alumno of alumnos">{{alumno.id}} - {{alumno.nombre}} - {{alumno.estado}}<span v-if="alumno.cantidad === 0"> - No hay NA</span></li>
+      </ul>
+    </div>
 
-		var uiConfig = {
-  		callbacks: {
-    		signInSuccessWithAuthResult: function(authResult, redirectUrl) {
-      		return true;
-    		},
-    		uiShown: function() {
-      		document.getElementById('loader').style.display = 'none';
-   				 }
-  		},
-	  	signInFlow: 'popup',
-  		signInSuccessUrl: '<url-to-redirect-to-on-success>',
-  		signInOptions: [
-	    	firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    		firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    		firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-    		firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    		firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    		firebase.auth.PhoneAuthProvider.PROVIDER_ID
-  		],		
-  		tosUrl: '<your-tos-url>',
-  		privacyPolicyUrl: '<your-privacy-policy-url>'
-};
-		
-	</script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> <!-- VUE JS 2 -->
+  <script src="js/basic.js"></script> <!-- BASICO JS 2 -->
+	</body>
+
+
 </html>
